@@ -1,9 +1,7 @@
 import React from 'react';
+import Todo from './Todo';
 
-const TodoList = props => <ul className = "to-do-list">
-	<li>{this.props.items.map() = item => Todo, {key: item.id, item: text}}</li>
-</ul>
-
-() => onClick = {this.remove.Todo}
+const TodoList = props => <ul className = "to-do-list">{props.items.map(item => <Todo text = items.text} />)} 
+	</ul>
 
 export default TodoList;
