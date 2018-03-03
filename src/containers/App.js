@@ -10,6 +10,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			formValue: "",
 			data: [
 				{
 					id: 1,
@@ -26,24 +27,43 @@ class App extends React.Component {
 			]
 		};
 	}
-	addTodo(val) {
+	addTodo(event) {
+		event.preventDefault();
 		const todo = {
-			text: val,
+			text: this.state.formValue,
 			id: uuid.v4()
 		};
 		const data = [...this.state.data, todo];
-		this.setState({ data });
+		this.setState({
+			formValue: "",
+			data
+		});
 	}
 	removeTodo(id) {
 		const reminder = this.state.data.filter(todo => todo.id !== id);
 		this.setState({ data: reminder });
 	}
+	onChangeHandle(event) {
+		this.setState({
+			formValue: event.target.value
+		});
+	}
 	render() {
 		return (
 			<div className={style.TodoApp}>
-				<Title title={"Tutaj pojawią się elementy naszej apki"} />
-				<TodoForm onSubmit={this.addTodo.bind(this)} />
-				<TodoList items={this.state.data} />
+				<Title
+					title={"Tutaj pojawią się elementy naszej apki"}
+					todoCount={this.state.data.length}
+				/>
+				<TodoForm
+					addTodo={this.addTodo.bind(this)}
+					val={this.state.formValue}
+					onChangeHandle={this.onChangeHandle.bind(this)}
+				/>
+				<TodoList
+					items={this.state.data}
+					removeTodo={this.removeTodo.bind(this)}
+				/>
 			</div>
 		);
 	}

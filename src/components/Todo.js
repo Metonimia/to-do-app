@@ -1,9 +1,5 @@
 import React from "react";
 
-const Todo = props => (
-	<li>
-		{props.text}
-	</li>
-);
+const Todo = props => <li onClick={props.removeItem}>{props.text}</li>;
 
 export default Todo;
