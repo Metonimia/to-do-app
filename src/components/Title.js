@@ -1,6 +1,9 @@
-import React from 'react';
+import React from "react";
 
-const Title = props => <h1>{props.title}</h1>
+const Title = props => (
+	<h1>
+		{props.title} ({props.todoCount})
+	</h1>
+);
 
 export default Title;
-
