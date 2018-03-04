@@ -34,9 +34,9 @@ class App extends React.Component {
 			id: uuid.v4()
 		};
 		const data = [...this.state.data, todo];
-		this.setState({ 
+		this.setState({
 			formValue: "",
-			data 
+			data
 		});
 	}
 	removeTodo(id) {
